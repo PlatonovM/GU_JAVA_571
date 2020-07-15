@@ -51,15 +51,14 @@ public class Lessons {
     static void task7DoGreetings(String a){
         System.out.println("Привет, " + a + "!");
     }
-    static boolean task8IsLeap(int y){
+    static void task8IsLeap(int y){
         if (y % 400 == 0){
             System.out.println("Високостный!");
-              return true;
+              return;
         } else if(y % 4 == 0 && y % 100 != 0) {
             System.out.println("Високостный!");
-              return true;
+              return;
         }
         System.out.println("Невисокостный!");
-              return false;
     }
 }
