@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Lessons {
     public static void main(String[] args) {
@@ -11,7 +13,6 @@ public class Lessons {
         int[] arraysBalance = new int[] { 1, 1, 1, 5, 9, 15, 2 };
         System.out.println(task6CheckBalance(arraysBalance));
         //task7: не успел
-
     }
     static void task1InversionArray(){
         int[] binArr = {0,0,1,0,1,0,1,0,1,1,1,0};
@@ -41,11 +42,13 @@ public class Lessons {
         System.out.println(Arrays.toString(arr));
     }
     static void task4Square(){
-        int size = 8;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Введите сторону квадрата:");
+        int size = scan.nextInt();
         int[][] arr1 = new int[size][size];
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
-                if(i == j){
+                if(i == j || i + 1 == size - j){
                     arr1[i][j] = 1;
                 }
                 else arr1[i][j] = 0;
@@ -86,4 +89,6 @@ public class Lessons {
             }
             return false;
         }
+
+
 }
