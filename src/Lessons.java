@@ -1,65 +1,94 @@
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
 public class Lessons {
     public static void main(String[] args) {
-        //Переменные
-        byte byteVariable = -120;
-        int intVariable = 2146999999;
-        long longVariable = 200000000;
-        float floatVariable = 3.14159f;
-        double doubleVariable = 120.5;
-        char literaVariable = 'L';
-        boolean isTrue = true;
+        task1InversionArray();
+        task2Array8Elements();
+        task3ArrEl6();
+        task4Square();
+        task5MiniMax();
+        //task6:
+        int[] arraysBalance = new int[] { 1, 1, 1, 5, 9, 15, 2 };
+        System.out.println(task6CheckBalance(arraysBalance));
+        //task7: не успел
+    }
+    static void task1InversionArray(){
+        int[] binArr = {0,0,1,0,1,0,1,0,1,1,1,0};
+        System.out.println(Arrays.toString(binArr));
+        for (int i=0; i < binArr.length; i++){
+            if(binArr[i] == 0){
+                binArr[i] = 1;
+            }
+            else binArr[i]=0;
+        }
+        System.out.println(Arrays.toString(binArr));
+    }
+    static void task2Array8Elements(){
+        int[] cos = new int[8];
+        for (int i = 0; i < 8; i++){
+            cos[i] = i * 3;
+        }
+        System.out.println(Arrays.toString(cos));
+    }
+    static void task3ArrEl6(){
+        int[] arr ={1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        for (int i = 0; i < arr.length; i++){
+            if(arr[i] < 6){
+                arr[i] = arr[i] * 2;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+    static void task4Square(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Введите сторону квадрата:");
+        int size = scan.nextInt();
+        int[][] arr1 = new int[size][size];
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                if(i == j || i + 1 == size - j){
+                    arr1[i][j] = 1;
+                }
+                else arr1[i][j] = 0;
+                System.out.print(arr1[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    static void task5MiniMax(){
+        int[] arr = {0, 5, -1, 56, 6, 75, 32, 45};
+        int min = arr[1];
+        int max = arr[1];
+        for(int i = 0; i < arr.length; i++){
+                if(arr[i] < min) {
+                    min = arr[i];
+                }
+                if(arr[i] > max){
+                    max = arr[i];
+                }
+        }
+        System.out.println("Максимальное значение " + max);
+        System.out.println("Минимальное значение " + min);
+    }
+    static boolean task6CheckBalance(int arr[]) {
+            for (int i = 0; i < arr.length; i++) {
+                int leftSum = 0;
+                int rightSum = 0;
+                for (int j = 0; j < arr.length; j++) {
+                    if (j > i) {
+                        rightSum += arr[j];
+                    } else {
+                        leftSum += arr[j];
+                    }
+                }
+                if (leftSum == rightSum) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-        String stringVariable = "Текст"; //ссылочный тип данных
 
-        System.out.println(task3Calculate(1,2,3,4));
-        System.out.println(task4ComparisonOfAmounts(10.0,1.0));
-        task5DeterminePositiveOrNegative(-3);
-        System.out.println(task6PassedANegativeNumber(-1));
-        task7DoGreetings("Миша");
-        task8IsLeap(2000); // кратно 400
-
-    }
-    static double task3Calculate(double a, double b, double c, double d){
-        if (d == 0){
-            System.out.println("Detected division by zero");
-            System.out.println("В параметрах метода задан делитель равный нулю");
-            return 0;
-        }
-        return (a * (b + (c / d)));
-    }
-    static boolean task4ComparisonOfAmounts(double a, double b){
-        double summ = a + b;
-        if (summ >= 10.0 && summ <= 20.0){
-            return true;
-        }
-        return false;
-    }
-    static void task5DeterminePositiveOrNegative(int a){
-        if (a < 0){
-            System.out.println("Введеное число является отрицательным!");
-        }
-        else {
-            System.out.println("Введеное число является положительным!");
-        }
-    }
-    static boolean task6PassedANegativeNumber(int a){
-        if (a < 0) {
-          return true;
-        }
-        return false;
-    }
-    static void task7DoGreetings(String a){
-        System.out.println("Привет, " + a + "!");
-    }
-    static boolean task8IsLeap(int y){
-        if (y % 400 == 0){
-            System.out.println("Високостный!");
-              return true;
-        } else if(y % 4 == 0 && y % 100 != 0) {
-            System.out.println("Високостный!");
-              return true;
-        }
-        System.out.println("Невисокостный!");
-              return false;
-    }
 }
